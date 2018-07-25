@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Savoye.ttc">
+            <string>SavoyeLetPlain</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Download View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -19,11 +24,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-Md-lRD">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-Md-lRD">
                                 <rect key="frame" x="56" y="104" width="263" height="29"/>
                                 <segments>
                                     <segment title="Resume"/>
-                                    <segment title="Cancel"/>
+                                    <segment title="Pause"/>
                                     <segment title="Background"/>
                                 </segments>
                                 <connections>
@@ -31,18 +36,28 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFs-6Y-z1w">
-                                <rect key="frame" x="323" y="617" width="36" height="30"/>
-                                <state key="normal" title="Clear"/>
+                                <rect key="frame" x="205" y="617" width="154" height="30"/>
+                                <state key="normal" title="Flush Downloaded File"/>
                                 <connections>
-                                    <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsv-OD-8Ad"/>
+                                    <action selector="flushDownloadedFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="40r-GO-jv1"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jUU-O9-3Z0">
                                 <rect key="frame" x="24" y="172" width="327" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfP-cZ-Tls">
+                                <rect key="frame" x="90.5" y="214" width="193" height="55"/>
+                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="36"/>
+                                <state key="normal" title="Download Complete"/>
+                                <connections>
+                                    <action selector="downloadComplete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p4A-LA-zRs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="kfP-cZ-Tls" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Kr-Xz-OAY"/>
+                            <constraint firstItem="kfP-cZ-Tls" firstAttribute="top" secondItem="jUU-O9-3Z0" secondAttribute="bottom" constant="40" id="3fk-SH-pGe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jUU-O9-3Z0" secondAttribute="trailing" constant="8" id="8fz-b0-paI"/>
                             <constraint firstItem="jUU-O9-3Z0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="95I-s6-dqv"/>
                             <constraint firstItem="0Ca-Md-lRD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="CIQ-dR-Wl3"/>
@@ -56,6 +71,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="downloadCompleteButton" destination="kfP-cZ-Tls" id="TdS-Gz-3wE"/>
+                        <outlet property="downloadSegment" destination="0Ca-Md-lRD" id="2ZZ-Kg-R9U"/>
                         <outlet property="progressView" destination="jUU-O9-3Z0" id="ct5-MO-cFU"/>
                     </connections>
                 </viewController>
@@ -96,7 +113,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fEC-fP-7zl">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Download Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fEC-fP-7zl">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

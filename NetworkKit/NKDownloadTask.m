@@ -10,14 +10,14 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-#define BLog(formatString, ...) NSLog((@"%s " formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+#define DebugLog(formatString, ...) NSLog((@"%s " formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
 
 typedef void(*NK_VIMP)(id, SEL, UIApplication *application, NSString *identifier, void (^completionHandel)(void));
 
 static void (^ NKBackgroundURLSessionHandler)(void) = nil;
 
 static void _NKHookEventsForBackground() {
-    Class class = [[UIApplication sharedApplication].delegate class];
+    Class class = UIApplication.sharedApplication.delegate.class;
     SEL selector = @selector(application:handleEventsForBackgroundURLSession:completionHandler:);
     Method methods = class_getInstanceMethod(class, selector);
     if (methods) {
@@ -25,6 +25,7 @@ static void _NKHookEventsForBackground() {
         id impBlock = ^(id target, UIApplication *application, NSString *identifier, void (^completionHandel)(void)) {
             vimp(target, selector, application, identifier, completionHandel);
             NKBackgroundURLSessionHandler = completionHandel;
+            NSLog(@"download task for background identifier %@", identifier);
         };
         IMP imp = imp_implementationWithBlock(impBlock);
         class_replaceMethod(class, selector, imp, method_getTypeEncoding(methods));
@@ -46,6 +47,7 @@ typedef enum : NSInteger {
     self = [super init];
     if (self) {
         _url = url;
+        _state = NKDownloadItemStateNone;
     }
     return self;
 }
@@ -57,7 +59,7 @@ typedef enum : NSInteger {
 
 @implementation NKDownloadTask {
     NSFileHandle *_fileHandle;
-    NKDownloadItem *_item;
+    NKDownloadItem *_currentItem;
 }
 
 static NKDownloadTask *_instance = nil;
@@ -76,26 +78,31 @@ static dispatch_once_t _onceToken = 0;
 }
 
 - (void)dealloc {
-    [_item.dataTask cancel];
-    _item = nil;
+    DebugLog();
 }
 
-- (void)invalidate {
+- (void)invalidateAndCancel {
+    [_currentItem.dataTask cancel];
     NKBackgroundURLSessionHandler = nil;
     _instance = nil;
     _onceToken = 0;
 }
 
+- (void)reset {
+    [_currentItem.dataTask cancel];
+    _currentItem = nil;
+}
+
 - (void)resume:(NSURL *)url fromBreakPoint:(BOOL)allow {
-    if (_item == nil) {
-        _item = [[NKDownloadItem alloc] initWithURL:url];
+    if (_currentItem == nil) {
+        _currentItem = [[NKDownloadItem alloc] initWithURL:url];
         NSString *cachePath = [self.cacheDirectory stringByAppendingPathComponent:url.lastPathComponent];
-        _item.location = [NSURL fileURLWithPath:cachePath isDirectory:NO];
+        _currentItem.location = [NSURL fileURLWithPath:cachePath isDirectory:NO];
         BOOL isExist = [NSFileManager.defaultManager fileExistsAtPath:cachePath];
         if (isExist) {
             NSDictionary *fileInfo = [NSFileManager.defaultManager attributesOfItemAtPath:cachePath error:nil];
             if (allow && fileInfo) {
-                _item.downloadedLength = fileInfo.fileSize;
+                _currentItem.downloadedLength = fileInfo.fileSize;
             } else {
                 [NSFileManager.defaultManager removeItemAtPath:cachePath error:nil];
                 [NSFileManager.defaultManager createFileAtPath:cachePath contents:nil attributes:nil];
@@ -106,26 +113,35 @@ static dispatch_once_t _onceToken = 0;
         _fileHandle = [NSFileHandle fileHandleForWritingAtPath:cachePath];
     }
     
-    if (_item.isDownloading == NO) {
-        _item.downloading = YES;
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        
-        NSString *range = [NSString stringWithFormat:@"bytes=%llu-", _item.downloadedLength];
-        [request setValue:range forHTTPHeaderField:@"Range"];
-        
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-        _item.dataTask = [session dataTaskWithRequest:request];
-        [_item.dataTask resume];
-        [session finishTasksAndInvalidate];
+    switch (_currentItem.state) {
+        case NKDownloadItemStateFinished: {
+            _currentItem.progress = 1.f;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
+                [self.delegate download:_currentItem didCompleteWithError:nil];
+            }
+        } break;
+        case NKDownloadItemStateDownloading: {
+        } break;
+        default: {
+            _currentItem.state = NKDownloadItemStateDownloading;
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            NSString *range = [NSString stringWithFormat:@"bytes=%llu-", _currentItem.downloadedLength];
+            [request setValue:range forHTTPHeaderField:@"Range"];
+            
+            NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+            _currentItem.dataTask = [session dataTaskWithRequest:request];
+            [_currentItem.dataTask resume];
+            [session finishTasksAndInvalidate];
+        } break;
     }
 }
 
-- (void)cancel {
-    if (_item && _item.isDownloading) {
-        _item.downloading = NO;
-        [_item.dataTask cancel];
+- (void)pause {
+    if (_currentItem && _currentItem.state == NKDownloadItemStateDownloading) {
+        _currentItem.state = NKDownloadItemStatePaused;
+        [_currentItem.dataTask cancel];
     }
 }
 
@@ -143,7 +159,8 @@ didReceiveResponse:(NSURLResponse *)response
      */
     completionHandler(NSURLSessionResponseAllow);
     
-    if (_item == nil) return;
+    if (_currentItem == nil) return;
+    if (_currentItem.state == NKDownloadItemStateFinished) return;
     
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     NSInteger status = httpResponse.statusCode;
@@ -153,51 +170,52 @@ didReceiveResponse:(NSURLResponse *)response
 
     switch (status) {
         case NKResponseStatusCodePartialContents: {
-            _item.expectedContentLength = length ?: httpResponse.expectedContentLength;
-            if (_item.contentLength == 0) {
-                _item.contentLength = _item.downloadedLength + _item.expectedContentLength;
+            _currentItem.expectedContentLength = length ?: httpResponse.expectedContentLength;
+            if (_currentItem.contentLength == 0) {
+                _currentItem.contentLength = _currentItem.downloadedLength + _currentItem.expectedContentLength;
             }
-            _item.contentType = type;
-        }
-            break;
+            _currentItem.contentType = type;
+        } break;
         default: {
-            if (_item.downloadedLength >= length) {
-                [self cancel];
-                _item.progress = 1.f;
+            if (_currentItem.downloadedLength >= length) {
+                [self pause];
+                _currentItem.progress = 1.f;
+                _currentItem.state = NKDownloadItemStateFinished;
                 if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
-                    [self.delegate download:_item didCompleteWithError:nil];
+                    [self.delegate download:_currentItem didCompleteWithError:nil];
                 }
-                _item = nil;
             }
-        }
-            break;
+        } break;
     }
 }
 
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data {
-    if (_item == nil) return;
+    if (_currentItem == nil) return;
+    if (_currentItem.state == NKDownloadItemStateFinished) return;
     
     [_fileHandle seekToEndOfFile];
     [_fileHandle writeData:data];
     
-    _item.downloadedLength += data.length;
-    _item.progress = _item.downloadedLength * 1.f / _item.contentLength;
+    _currentItem.downloadedLength += data.length;
+    _currentItem.progress = _currentItem.downloadedLength * 1.f / _currentItem.contentLength;
     if (self.delegate && [self.delegate respondsToSelector:@selector(download:didReceiveData:)]) {
-        [self.delegate download:_item didReceiveData:data];
+        [self.delegate download:_currentItem didReceiveData:data];
     }
 }
 
 - (void)URLSession:(NSURLSession *)session
               task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error {
-    if (_item == nil) return;
+    if (_currentItem == nil) return;
+    if (_currentItem.state != NKDownloadItemStateDownloading) return;
+    _currentItem.state = error ? NKDownloadItemStatePaused : NKDownloadItemStateFinished;
+
     if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
-        [self.delegate download:_item didCompleteWithError:error];
+        [self.delegate download:_currentItem didCompleteWithError:error];
     }
-    _item = nil;
-    [self invalidate];
+    [self invalidateAndCancel];
 }
 
 #pragma mark - NSURLSessionDelegate
@@ -213,23 +231,30 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
 
 - (void)URLSession:(NSURLSession *)session
 didBecomeInvalidWithError:(NSError *)error {
-    if (_item == nil) return;
+    if (_currentItem == nil) return;
+    if (_currentItem.state != NKDownloadItemStateDownloading) return;
+    _currentItem.state = NKDownloadItemStatePaused;
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
-        [self.delegate download:_item didCompleteWithError:error];
+        [self.delegate download:_currentItem didCompleteWithError:error];
     }
-    _item = nil;
-    [self invalidate];
+    NKBackgroundURLSessionHandler = nil;
 }
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
+    NSLog(@"download task finished for background session is in main thread %d", (int)NSThread.isMainThread);
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"download task finished for background session");
+        if (self->_currentItem.state == NKDownloadItemStateFinished) return;
+        self->_currentItem.state = NKDownloadItemStateFinished;
+        
         if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
-            [self.delegate downloadDidFinishedForBackground:self->_item];
+            [self.delegate downloadDidFinishedForBackground:self->_currentItem];
         }
-        self->_item = nil;
         if (NKBackgroundURLSessionHandler) {
             void (^completionHandler)(void) = NKBackgroundURLSessionHandler;
-            [self invalidate];
+            NKBackgroundURLSessionHandler = nil;
+            [self invalidateAndCancel];
             completionHandler();
         }
     });

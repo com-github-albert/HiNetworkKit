@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    NKDownloadItemStateNone,
+    NKDownloadItemStateDownloading,
+    NKDownloadItemStatePaused,
+    NKDownloadItemStateFinished,
+} NKDownloadItemState;
+
 @interface NKDownloadItem : NSObject
 
 @property (nonatomic, strong, readonly) NSURL *url;
 @property (nonatomic, strong) NSURL *location;
-@property (nonatomic, getter=isDownloading) BOOL downloading;
+@property (nonatomic) NKDownloadItemState state;
 
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
@@ -47,10 +54,11 @@
 
 @property (nonatomic, strong) NSString *cacheDirectory;
 @property (nonatomic, weak) id<NKDownloadTaskDelegate> delegate;
-@property (nonatomic, strong, readonly) NKDownloadItem *item;
+@property (nonatomic, strong, readonly) NKDownloadItem *currentItem;
 
 - (void)resume:(NSURL *)url fromBreakPoint:(BOOL)allow;
-- (void)cancel;
-- (void)invalidate;
+- (void)pause;
+- (void)reset;
+- (void)invalidateAndCancel;
 
 @end

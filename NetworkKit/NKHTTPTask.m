@@ -22,6 +22,8 @@
                                             httpMethod:method
                                             parameters:parameters
                                                headers:headers];
+    if (!request) return nil;
+    
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [NSURLSession.sharedSession dataTaskWithRequest:request
                                              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -50,6 +52,8 @@
                                             httpMethod:method
                                             parameters:parameters
                                                headers:headers];
+    if (!request) return nil;
+    
     __block NSURLSessionDownloadTask *task = nil;
     task = [NSURLSession.sharedSession downloadTaskWithRequest:request
                                              completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -82,6 +86,8 @@
     }
     
     NSURL *requestURL = [NSURL URLWithString:urlString];
+    if (!requestURL) return nil;
+    
     NSMutableURLRequest *mutableRequest = [NSMutableURLRequest requestWithURL:requestURL];
     mutableRequest.HTTPMethod = method;
     
