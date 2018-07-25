@@ -1,5 +1,8 @@
 NetworkKit
 ==============
+
+>A lightweight networking framework for iOS
+
 ![](NetworkKit.png)
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYCache/master/LICENSE)&nbsp;
