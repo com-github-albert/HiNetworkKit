@@ -21,12 +21,12 @@ Installation
 ### Manually
 
 * 1. Clone the repo.
-* 2. Drag the Network derectory to your project.
+* 2. Drag the `Source` derectory to your project.
 
 Requirements
 ==============
 
-This library requires iOS 8.0+ and Xcode 9.0+
+This library requires iOS 8.0+ and Xcode 10.0+
 
 License
 ==============

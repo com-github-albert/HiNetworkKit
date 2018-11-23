@@ -8,15 +8,21 @@
 
 #import "NKDownloadTask.h"
 #import <UIKit/UIKit.h>
+
 #import <objc/runtime.h>
 
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
+
 #define DebugLog(formatString, ...) NSLog((@"%s " formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+
+#pragma mark - Hook Background Handler
 
 typedef void(*NK_VIMP)(id, SEL, UIApplication *application, NSString *identifier, void (^completionHandel)(void));
 
 static void (^ NKBackgroundURLSessionHandler)(void) = nil;
 
-static void _NKHookEventsForBackground() {
+static void nk_hookHandlerEventsForBackground() {
     Class class = UIApplication.sharedApplication.delegate.class;
     SEL selector = @selector(application:handleEventsForBackgroundURLSession:completionHandler:);
     Method methods = class_getInstanceMethod(class, selector);
@@ -35,21 +41,119 @@ static void _NKHookEventsForBackground() {
     }
 }
 
+#pragma mark - Data Persistence
+
+static NSString *kNKUserDefaultsContentLengthKey = @"kNKUserDefaultsContentLengthKey";
+
+static void nk_saveContentLength(unsigned long long contentLength) {
+    if ( ! kNKUserDefaultsContentLengthKey) return;
+    [NSUserDefaults.standardUserDefaults setObject:[NSNumber numberWithUnsignedLongLong:contentLength]
+                                            forKey:kNKUserDefaultsContentLengthKey];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
+static unsigned long long nk_fetchContectLength() {
+    if ( ! kNKUserDefaultsContentLengthKey) return 0;
+    NSNumber *contentLength = [NSUserDefaults.standardUserDefaults objectForKey:kNKUserDefaultsContentLengthKey];
+    if (contentLength == NULL) {
+        return 0;
+    }
+    return contentLength.unsignedLongLongValue;
+}
+
+static void nk_deleteContectLength() {
+    if ( ! kNKUserDefaultsContentLengthKey) return;
+    [NSUserDefaults.standardUserDefaults removeObjectForKey:kNKUserDefaultsContentLengthKey];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
+#pragma mark - MD5
+
+@interface NSString (NetworkKit)
+
+- (NSString *)nk_md5;
+
+@end
+
+@implementation NSString (NetworkKit)
+
+- (NSString *)nk_md5 {
+    const char *cStr = [self UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest );
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return output;
+}
+
+@end
+
+#pragma mark - NetworkKit
+
 typedef enum : NSInteger {
     NKResponseStatusCodeSuccess = 200,
     NKResponseStatusCodePartialContents = 206,
     NKResponseStatusCodeSatisfiable = 416
 } NKResponseStatusCode;
 
+
 @implementation NKDownloadItem
 
 - (instancetype)initWithURL:(NSURL *)url  {
     self = [super init];
-    if (self) {
-        _url = url;
-        _state = NKDownloadItemStateNone;
-    }
+    if ( ! url) return nil;
+    _url = url;
+    _state = NKDownloadItemStateNone;
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    NSURL *url = [coder decodeObjectForKey:@"NKURL"];
+    if ( ! url) return nil;
+    
+    NKDownloadItem *item = [self initWithURL:url];
+    item.location = [coder decodeObjectForKey:@"NKLocation"];
+    item.state = [coder decodeIntegerForKey:@"NKState"];
+    
+    item.dataTask = [coder decodeObjectForKey:@"NKDataTask"];
+    item.downloadTask = [coder decodeObjectForKey:@"NKDownloadTask"];
+    item.resumeData = [coder decodeObjectForKey:@"NKResumeData"];
+    
+    item.contentType = [coder decodeObjectForKey:@"NKContentType"];
+    item.requestOffset = [coder decodeIntegerForKey:@"NKRequestOffset"];
+    item.downloadedLength = [coder decodeIntegerForKey:@"NKDownloadedLength"];
+    item.contentLength = [coder decodeIntegerForKey:@"NKContentLength"];
+    item.expectedContentLength = [coder decodeIntegerForKey:@"NKExpectedContentLength"];
+    
+    item.progress = [coder decodeFloatForKey:@"NKProgress"];
+    item.speed = [coder decodeFloatForKey:@"NKSpeed"];
+    
+    return item;
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+    if ( ! self.url) return;
+    
+    [aCoder encodeObject:self.url forKey:@"NKURL"];
+    [aCoder encodeObject:self.location forKey:@"NKLocation"];
+    [aCoder encodeInteger:self.state forKey:@"NKState"];
+    
+    [aCoder encodeObject:self.dataTask forKey:@"NKDataTask"];
+    [aCoder encodeObject:self.downloadTask forKey:@"NKDownloadTask"];
+    [aCoder encodeObject:self.resumeData forKey:@"NKResumeData"];
+    
+    [aCoder encodeObject:self.contentType forKey:@"NKContentType"];
+    [aCoder encodeInteger:self.requestOffset forKey:@"NKRequestOffset"];
+    [aCoder encodeInteger:self.downloadedLength forKey:@"NKDownloadedLength"];
+    [aCoder encodeInteger:self.contentLength forKey:@"NKContentLength"];
+    [aCoder encodeInteger:self.expectedContentLength forKey:@"NKExpectedContentLength"];
+    
+    [aCoder encodeFloat:self.progress forKey:@"NKProgress"];
+    [aCoder encodeFloat:self.speed forKey:@"NKSpeed"];
 }
 
 @end
@@ -60,6 +164,8 @@ typedef enum : NSInteger {
 @implementation NKDownloadTask {
     NSFileHandle *_fileHandle;
     NKDownloadItem *_currentItem;
+    
+    BOOL _resumeFromBreakPoint;
 }
 
 static NKDownloadTask *_instance = nil;
@@ -68,7 +174,7 @@ static dispatch_once_t _onceToken = 0;
 + (NKDownloadTask *)backgroundTask {
     dispatch_once(&_onceToken, ^{
         _instance = [[self alloc] init];
-        _NKHookEventsForBackground();
+        nk_hookHandlerEventsForBackground();
     });
     return _instance;
 }
@@ -81,19 +187,13 @@ static dispatch_once_t _onceToken = 0;
     DebugLog();
 }
 
-- (void)invalidateAndCancel {
-    [_currentItem.dataTask cancel];
-    NKBackgroundURLSessionHandler = nil;
-    _instance = nil;
-    _onceToken = 0;
-}
-
-- (void)reset {
-    [_currentItem.dataTask cancel];
-    _currentItem = nil;
-}
+#pragma mark - Public
 
 - (void)resume:(NSURL *)url fromBreakPoint:(BOOL)allow {
+    _resumeFromBreakPoint = allow;
+    if (_resumeFromBreakPoint) {
+        kNKUserDefaultsContentLengthKey = url.absoluteString.nk_md5;
+    }
     if (_currentItem == nil) {
         _currentItem = [[NKDownloadItem alloc] initWithURL:url];
         NSString *cachePath = [self.cacheDirectory stringByAppendingPathComponent:url.lastPathComponent];
@@ -103,6 +203,7 @@ static dispatch_once_t _onceToken = 0;
             NSDictionary *fileInfo = [NSFileManager.defaultManager attributesOfItemAtPath:cachePath error:nil];
             if (allow && fileInfo) {
                 _currentItem.downloadedLength = fileInfo.fileSize;
+                _currentItem.contentLength = nk_fetchContectLength();
             } else {
                 [NSFileManager.defaultManager removeItemAtPath:cachePath error:nil];
                 [NSFileManager.defaultManager createFileAtPath:cachePath contents:nil attributes:nil];
@@ -127,6 +228,9 @@ static dispatch_once_t _onceToken = 0;
             
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             NSString *range = [NSString stringWithFormat:@"bytes=%llu-", _currentItem.downloadedLength];
+            if (_currentItem.contentLength > 0) {
+                range = [range stringByAppendingFormat:@"%llu", _currentItem.contentLength];
+            }
             [request setValue:range forHTTPHeaderField:@"Range"];
             
             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -143,6 +247,18 @@ static dispatch_once_t _onceToken = 0;
         _currentItem.state = NKDownloadItemStatePaused;
         [_currentItem.dataTask cancel];
     }
+}
+
+- (void)reset {
+    [_currentItem.dataTask cancel];
+    _currentItem = nil;
+}
+
+- (void)invalidateAndCancel {
+    [_currentItem.dataTask cancel];
+    NKBackgroundURLSessionHandler = nil;
+    _instance = nil;
+    _onceToken = 0;
 }
 
 #pragma mark - NSURLSessionDataDelegate
@@ -163,29 +279,26 @@ didReceiveResponse:(NSURLResponse *)response
     if (_currentItem.state == NKDownloadItemStateFinished) return;
     
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSInteger status = httpResponse.statusCode;
     NSDictionary *headers = httpResponse.allHeaderFields;
     long long length = [[headers valueForKey:@"Content-Length"] longLongValue];
     NSString *type = [headers valueForKey:@"Content-Type"];
-
-    switch (status) {
-        case NKResponseStatusCodePartialContents: {
-            _currentItem.expectedContentLength = length ?: httpResponse.expectedContentLength;
-            if (_currentItem.contentLength == 0) {
-                _currentItem.contentLength = _currentItem.downloadedLength + _currentItem.expectedContentLength;
+    
+    _currentItem.contentType = type;
+    if (_currentItem.contentLength == 0) {
+        _currentItem.expectedContentLength = length ?: httpResponse.expectedContentLength;
+        _currentItem.contentLength = _currentItem.downloadedLength + _currentItem.expectedContentLength;
+        if (_resumeFromBreakPoint) {
+            nk_saveContentLength(_currentItem.contentLength);
+        }
+    } else {
+        if (_currentItem.downloadedLength >= _currentItem.contentLength) {
+            [self pause];
+            _currentItem.progress = 1.f;
+            _currentItem.state = NKDownloadItemStateFinished;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
+                [self.delegate download:_currentItem didCompleteWithError:nil];
             }
-            _currentItem.contentType = type;
-        } break;
-        default: {
-            if (_currentItem.downloadedLength >= length) {
-                [self pause];
-                _currentItem.progress = 1.f;
-                _currentItem.state = NKDownloadItemStateFinished;
-                if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
-                    [self.delegate download:_currentItem didCompleteWithError:nil];
-                }
-            }
-        } break;
+        }
     }
 }
 
@@ -211,7 +324,10 @@ didCompleteWithError:(nullable NSError *)error {
     if (_currentItem == nil) return;
     if (_currentItem.state != NKDownloadItemStateDownloading) return;
     _currentItem.state = error ? NKDownloadItemStatePaused : NKDownloadItemStateFinished;
-
+    
+    if (_resumeFromBreakPoint) {
+        nk_deleteContectLength();
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(download:didCompleteWithError:)]) {
         [self.delegate download:_currentItem didCompleteWithError:error];
     }

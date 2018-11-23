@@ -15,26 +15,27 @@ typedef enum : NSUInteger {
     NKDownloadItemStateFinished,
 } NKDownloadItemState;
 
-@interface NKDownloadItem : NSObject
+@interface NKDownloadItem : NSObject <NSCoding>
 
-@property (nonatomic, strong, readonly) NSURL *url;
-@property (nonatomic, strong) NSURL *location;
-@property (nonatomic) NKDownloadItemState state;
+@property (atomic, strong, readonly) NSURL *url;
+@property (atomic, strong) NSURL *location;
+@property (atomic) NKDownloadItemState state;
 
-@property (nonatomic, strong) NSURLSessionDataTask *dataTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
-@property (nonatomic, strong) NSData *resumeData;
+@property (atomic, strong) NSURLSessionDataTask *dataTask;
+@property (atomic, strong) NSURLSessionDownloadTask *downloadTask;
+@property (atomic, strong) NSData *resumeData;
 
-@property (nonatomic, strong) NSString *contentType;
-@property (nonatomic) unsigned long long requestOffset;
-@property (nonatomic) unsigned long long downloadedLength;
-@property (nonatomic) unsigned long long contentLength;
-@property (nonatomic) unsigned long long expectedContentLength;
-@property (nonatomic) float progress;
-@property (nonatomic) float speed;
+@property (atomic, strong) NSString *contentType;
+@property (atomic) unsigned long long requestOffset;
+@property (atomic) unsigned long long downloadedLength;
+@property (atomic) unsigned long long contentLength;
+@property (atomic) unsigned long long expectedContentLength;
+@property (atomic) float progress;
+@property (atomic) float speed;
 
++ (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
 @end
 

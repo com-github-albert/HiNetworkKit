@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B8583E420734FDE0056112E /* NKDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8583E220734FDE0056112E /* NKDownloadTask.m */; };
-		6B8583E7207366A00056112E /* NKHTTPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8583E6207366A00056112E /* NKHTTPTask.m */; };
-		6B895425209164EC006627F3 /* NKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B895424209164EC006627F3 /* NKCache.m */; };
-		6B89542820916515006627F3 /* NKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89542720916515006627F3 /* NKMemoryCache.m */; };
-		6B89542B20916520006627F3 /* NKDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89542A20916520006627F3 /* NKDiskCache.m */; };
-		6B8BA2B6208EC852002DF325 /* NKUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8BA2B5208EC852002DF325 /* NKUploadTask.m */; };
+		4C57F50521A83BCF0086937F /* NKUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F4F721A83BCF0086937F /* NKUploadTask.m */; };
+		4C57F50621A83BCF0086937F /* NKDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F4FC21A83BCF0086937F /* NKDiskCache.m */; };
+		4C57F50721A83BCF0086937F /* NKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F4FD21A83BCF0086937F /* NKCache.m */; };
+		4C57F50821A83BCF0086937F /* NKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F4FE21A83BCF0086937F /* NKMemoryCache.m */; };
+		4C57F50921A83BCF0086937F /* NKHTTPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F50321A83BCF0086937F /* NKHTTPTask.m */; };
+		4C57F50A21A83BCF0086937F /* NKDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C57F50421A83BCF0086937F /* NKDownloadTask.m */; };
 		6BB720CA2091C39E00EF49BA /* BackgroundTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB720C92091C39E00EF49BA /* BackgroundTaskViewController.m */; };
 		6BF4F9CA206E1B2A00BD2EE7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF4F9C9206E1B2A00BD2EE7 /* AppDelegate.m */; };
 		6BF4F9CD206E1B2A00BD2EE7 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF4F9CC206E1B2A00BD2EE7 /* DownloadViewController.m */; };
@@ -23,19 +23,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6B8583E120734FDE0056112E /* NKDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadTask.h; sourceTree = "<group>"; };
-		6B8583E220734FDE0056112E /* NKDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadTask.m; sourceTree = "<group>"; };
-		6B8583E5207366A00056112E /* NKHTTPTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKHTTPTask.h; sourceTree = "<group>"; };
-		6B8583E6207366A00056112E /* NKHTTPTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKHTTPTask.m; sourceTree = "<group>"; };
-		6B895423209164EC006627F3 /* NKCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCache.h; sourceTree = "<group>"; };
-		6B895424209164EC006627F3 /* NKCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCache.m; sourceTree = "<group>"; };
-		6B89542620916515006627F3 /* NKMemoryCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKMemoryCache.h; sourceTree = "<group>"; };
-		6B89542720916515006627F3 /* NKMemoryCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKMemoryCache.m; sourceTree = "<group>"; };
-		6B89542920916520006627F3 /* NKDiskCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKDiskCache.h; sourceTree = "<group>"; };
-		6B89542A20916520006627F3 /* NKDiskCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKDiskCache.m; sourceTree = "<group>"; };
-		6B89542D20916810006627F3 /* NKCacheProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCacheProtocol.h; sourceTree = "<group>"; };
-		6B8BA2B4208EC852002DF325 /* NKUploadTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKUploadTask.h; sourceTree = "<group>"; };
-		6B8BA2B5208EC852002DF325 /* NKUploadTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKUploadTask.m; sourceTree = "<group>"; };
+		4C57F4F721A83BCF0086937F /* NKUploadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKUploadTask.m; sourceTree = "<group>"; };
+		4C57F4F821A83BCF0086937F /* NKHTTPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPTask.h; sourceTree = "<group>"; };
+		4C57F4F921A83BCF0086937F /* NKDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadTask.h; sourceTree = "<group>"; };
+		4C57F4FA21A83BCF0086937F /* NKUploadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKUploadTask.h; sourceTree = "<group>"; };
+		4C57F4FC21A83BCF0086937F /* NKDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDiskCache.m; sourceTree = "<group>"; };
+		4C57F4FD21A83BCF0086937F /* NKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKCache.m; sourceTree = "<group>"; };
+		4C57F4FE21A83BCF0086937F /* NKMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKMemoryCache.m; sourceTree = "<group>"; };
+		4C57F4FF21A83BCF0086937F /* NKCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCacheProtocol.h; sourceTree = "<group>"; };
+		4C57F50021A83BCF0086937F /* NKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCache.h; sourceTree = "<group>"; };
+		4C57F50121A83BCF0086937F /* NKDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDiskCache.h; sourceTree = "<group>"; };
+		4C57F50221A83BCF0086937F /* NKMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMemoryCache.h; sourceTree = "<group>"; };
+		4C57F50321A83BCF0086937F /* NKHTTPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPTask.m; sourceTree = "<group>"; };
+		4C57F50421A83BCF0086937F /* NKDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadTask.m; sourceTree = "<group>"; };
 		6BB720C82091C39E00EF49BA /* BackgroundTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundTaskViewController.h; sourceTree = "<group>"; };
 		6BB720C92091C39E00EF49BA /* BackgroundTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundTaskViewController.m; sourceTree = "<group>"; };
 		6BF4F9C5206E1B2A00BD2EE7 /* NetworkKit_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkKit_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,30 +61,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B8583DE20734FDE0056112E /* NetworkKit */ = {
+		4C57F4F621A83BCF0086937F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6B8583E120734FDE0056112E /* NKDownloadTask.h */,
-				6B8583E220734FDE0056112E /* NKDownloadTask.m */,
-				6B8583E5207366A00056112E /* NKHTTPTask.h */,
-				6B8583E6207366A00056112E /* NKHTTPTask.m */,
-				6B8BA2B4208EC852002DF325 /* NKUploadTask.h */,
-				6B8BA2B5208EC852002DF325 /* NKUploadTask.m */,
-				6B89542C20916737006627F3 /* NKCache */,
+				4C57F4F821A83BCF0086937F /* NKHTTPTask.h */,
+				4C57F50321A83BCF0086937F /* NKHTTPTask.m */,
+				4C57F4F921A83BCF0086937F /* NKDownloadTask.h */,
+				4C57F50421A83BCF0086937F /* NKDownloadTask.m */,
+				4C57F4FA21A83BCF0086937F /* NKUploadTask.h */,
+				4C57F4F721A83BCF0086937F /* NKUploadTask.m */,
+				4C57F4FB21A83BCF0086937F /* NKCache */,
 			);
-			path = NetworkKit;
+			name = Source;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
-		6B89542C20916737006627F3 /* NKCache */ = {
+		4C57F4FB21A83BCF0086937F /* NKCache */ = {
 			isa = PBXGroup;
 			children = (
-				6B895423209164EC006627F3 /* NKCache.h */,
-				6B895424209164EC006627F3 /* NKCache.m */,
-				6B89542620916515006627F3 /* NKMemoryCache.h */,
-				6B89542720916515006627F3 /* NKMemoryCache.m */,
-				6B89542920916520006627F3 /* NKDiskCache.h */,
-				6B89542A20916520006627F3 /* NKDiskCache.m */,
-				6B89542D20916810006627F3 /* NKCacheProtocol.h */,
+				4C57F4FC21A83BCF0086937F /* NKDiskCache.m */,
+				4C57F4FD21A83BCF0086937F /* NKCache.m */,
+				4C57F4FE21A83BCF0086937F /* NKMemoryCache.m */,
+				4C57F4FF21A83BCF0086937F /* NKCacheProtocol.h */,
+				4C57F50021A83BCF0086937F /* NKCache.h */,
+				4C57F50121A83BCF0086937F /* NKDiskCache.h */,
+				4C57F50221A83BCF0086937F /* NKMemoryCache.h */,
 			);
 			path = NKCache;
 			sourceTree = "<group>";
@@ -92,7 +93,7 @@
 		6BF4F9BC206E1B2A00BD2EE7 = {
 			isa = PBXGroup;
 			children = (
-				6B8583DE20734FDE0056112E /* NetworkKit */,
+				4C57F4F621A83BCF0086937F /* Source */,
 				6BF4F9C7206E1B2A00BD2EE7 /* NetworkKit_Demo */,
 				6BF4F9C6206E1B2A00BD2EE7 /* Products */,
 			);
@@ -195,16 +196,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B89542820916515006627F3 /* NKMemoryCache.m in Sources */,
-				6B8BA2B6208EC852002DF325 /* NKUploadTask.m in Sources */,
-				6B895425209164EC006627F3 /* NKCache.m in Sources */,
+				4C57F50921A83BCF0086937F /* NKHTTPTask.m in Sources */,
+				4C57F50821A83BCF0086937F /* NKMemoryCache.m in Sources */,
+				4C57F50521A83BCF0086937F /* NKUploadTask.m in Sources */,
+				4C57F50721A83BCF0086937F /* NKCache.m in Sources */,
 				6BB720CA2091C39E00EF49BA /* BackgroundTaskViewController.m in Sources */,
 				6BF4F9CD206E1B2A00BD2EE7 /* DownloadViewController.m in Sources */,
-				6B8583E7207366A00056112E /* NKHTTPTask.m in Sources */,
 				6BF4F9D8206E1B2A00BD2EE7 /* main.m in Sources */,
+				4C57F50A21A83BCF0086937F /* NKDownloadTask.m in Sources */,
+				4C57F50621A83BCF0086937F /* NKDiskCache.m in Sources */,
 				6BF4F9CA206E1B2A00BD2EE7 /* AppDelegate.m in Sources */,
-				6B89542B20916520006627F3 /* NKDiskCache.m in Sources */,
-				6B8583E420734FDE0056112E /* NKDownloadTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
