@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IOb-lQ-6Wh"/>
+                        <viewControllerLayoutGuide type="bottom" id="pN0-BQ-RjV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bK4-ia-I4X">
+                                <rect key="frame" x="165.5" y="311.5" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="565-jl-nvC"/>
+                                    <constraint firstAttribute="height" constant="44" id="LUA-xE-BWH"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f58-L6-85G">
+                                <rect key="frame" x="272" y="579" width="87" height="30"/>
+                                <state key="normal" title="Flush Assets"/>
+                                <connections>
+                                    <action selector="flushAssets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vDU-eT-FDF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dM-VL-rUI">
+                                <rect key="frame" x="202" y="617" width="157" height="30"/>
+                                <state key="normal" title="Flush Download Cache"/>
+                                <connections>
+                                    <action selector="flushDownloadCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DpR-yp-jaE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-Y1-cxl">
+                                <rect key="frame" x="149" y="318.5" width="77" height="30"/>
+                                <state key="normal" title="Present AR"/>
+                                <connections>
+                                    <action selector="presentAR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GWL-t5-uNY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.74480084369999999" green="0.72558028720000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sg9-Y1-cxl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7an-iF-x7R"/>
+                            <constraint firstAttribute="trailing" secondItem="f58-L6-85G" secondAttribute="trailing" constant="16" id="ECo-Q7-Y3H"/>
+                            <constraint firstItem="bK4-ia-I4X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NXs-vx-bdY"/>
+                            <constraint firstItem="sg9-Y1-cxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TNj-70-qDT"/>
+                            <constraint firstItem="bK4-ia-I4X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vx0-3y-DLd"/>
+                            <constraint firstAttribute="trailing" secondItem="3dM-VL-rUI" secondAttribute="trailing" constant="16" id="bEI-qy-X25"/>
+                            <constraint firstItem="3dM-VL-rUI" firstAttribute="top" secondItem="f58-L6-85G" secondAttribute="bottom" constant="8" id="hRO-QG-cig"/>
+                            <constraint firstAttribute="bottom" secondItem="3dM-VL-rUI" secondAttribute="bottom" constant="20" id="jEz-ek-Jae"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="events" destination="3dM-VL-rUI" id="BFW-Zo-FLy"/>
+                        <outletCollection property="events" destination="sg9-Y1-cxl" id="NM0-OK-cbl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="134.48275862068968"/>
+        </scene>
+    </scenes>
+</document>

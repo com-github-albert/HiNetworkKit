@@ -21,7 +21,7 @@ Installation
 ### Manually
 
 * 1. Clone the repo.
-* 2. Drag the `Source` derectory to your project.
+* 2. Drag the `Source/NetworkKit` derectory to your project.
 
 Requirements
 ==============
