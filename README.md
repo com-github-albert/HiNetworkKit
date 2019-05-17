@@ -1,34 +1,34 @@
-NetworkKit
-==============
+# High Performance NetworkKit
 
 >A lightweight networking framework for iOS
 
-![](NetworkKit.png)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYCache/master/LICENSE)&nbsp;
-[![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
+## Features
 
-Features
-==============
+- [x] Download the file from a url.
+- [x] Download the breakpoint
+- [x] Upload a file.
+- [x] GET or POST requests.
 
-* Downloading the file from a url.
-* Updating a file.
-* Taking GET or POST http requests.
-
-Installation
-==============
-
-### Manually
-
-* 1. Clone the repo.
-* 2. Drag the `Source/NetworkKit` derectory to your project.
-
-Requirements
-==============
+## Requirements
 
 This library requires iOS 8.0+ and Xcode 10.0+
 
-License
-==============
+## Installation
 
-NetworkKit is provided under the MIT license. See [LICENSE](https://github.com/mutating/NetworkKit/blob/master/LICENSE) file for details.
+### Manually
+
+Drag and Copy the `Source` directory to your project.
+
+## Usage
+
+You can see document from [here](docs/Usage.md).
+
+## License
+
+NetworkKit is provided under the MIT license. See [LICENSE](https://github.com/mutating/HiNetworkKit/blob/master/LICENSE) file for details.

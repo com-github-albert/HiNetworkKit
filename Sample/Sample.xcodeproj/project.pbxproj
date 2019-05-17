@@ -8,43 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		6B89776121C3593C00C6399A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89776021C3593C00C6399A /* AppDelegate.m */; };
-		6B89776421C3593C00C6399A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89776321C3593C00C6399A /* ViewController.m */; };
+		6B89776421C3593C00C6399A /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89776321C3593C00C6399A /* DownloadViewController.m */; };
 		6B89776721C3593C00C6399A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B89776521C3593C00C6399A /* Main.storyboard */; };
 		6B89776921C3593D00C6399A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B89776821C3593D00C6399A /* Assets.xcassets */; };
 		6B89776C21C3593D00C6399A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B89776A21C3593D00C6399A /* LaunchScreen.storyboard */; };
 		6B89776F21C3593D00C6399A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89776E21C3593D00C6399A /* main.m */; };
 		6B89777921C3593D00C6399A /* SampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89777821C3593D00C6399A /* SampleTests.m */; };
 		6B89778421C3593D00C6399A /* SampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89778321C3593D00C6399A /* SampleUITests.m */; };
-		6B8977A321C35A8100C6399A /* NKUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89779221C35A8100C6399A /* NKUploadTask.m */; };
-		6B8977A421C35A8100C6399A /* NKDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89779721C35A8100C6399A /* NKDiskCache.m */; };
-		6B8977A521C35A8100C6399A /* NKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89779821C35A8100C6399A /* NKCache.m */; };
-		6B8977A621C35A8100C6399A /* NKMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89779921C35A8100C6399A /* NKMemoryCache.m */; };
-		6B8977A721C35A8100C6399A /* NKHTTPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B89779E21C35A8100C6399A /* NKHTTPTask.m */; };
-		6B8977A821C35A8100C6399A /* NKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977A121C35A8100C6399A /* NKReachabilityManager.m */; };
-		6B8977A921C35A8100C6399A /* NKDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977A221C35A8100C6399A /* NKDownloadTask.m */; };
-		6B8977BA21C35BDD00C6399A /* NKDownloadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8977B521C35BDD00C6399A /* NKDownloadViewController.storyboard */; };
-		6B8977BB21C35BDD00C6399A /* NKDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977B721C35BDD00C6399A /* NKDownloadManager.m */; };
-		6B8977BC21C35BDD00C6399A /* NKDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977B821C35BDD00C6399A /* NKDownloadViewController.m */; };
-		6B8977BE21C35C2600C6399A /* NKDownloadViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8977BD21C35C2600C6399A /* NKDownloadViewController.xcassets */; };
-		6B8977CD21C35CF100C6399A /* NKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977C221C35CF100C6399A /* NKFileManager.m */; };
-		6B8977FF21C35D5900C6399A /* NKUnZipHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977D321C35D5800C6399A /* NKUnZipHelper.m */; };
-		6B89780021C35D5900C6399A /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977D721C35D5800C6399A /* crypt.c */; };
-		6B89780121C35D5900C6399A /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977D821C35D5900C6399A /* unzip.c */; };
-		6B89780221C35D5900C6399A /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977D921C35D5900C6399A /* zip.c */; };
-		6B89780321C35D5900C6399A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977DB21C35D5900C6399A /* ioapi.c */; };
-		6B89780421C35D5900C6399A /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977DD21C35D5900C6399A /* ioapi_buf.c */; };
-		6B89780521C35D5900C6399A /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977E121C35D5900C6399A /* ioapi_mem.c */; };
-		6B89780621C35D5900C6399A /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977E221C35D5900C6399A /* minishared.c */; };
-		6B89780721C35D5900C6399A /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977E821C35D5900C6399A /* aeskey.c */; };
-		6B89780821C35D5900C6399A /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977E921C35D5900C6399A /* hmac.c */; };
-		6B89780921C35D5900C6399A /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977EC21C35D5900C6399A /* aescrypt.c */; };
-		6B89780A21C35D5900C6399A /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977ED21C35D5900C6399A /* fileenc.c */; };
-		6B89780B21C35D5900C6399A /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977EF21C35D5900C6399A /* sha1.c */; };
-		6B89780C21C35D5900C6399A /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977F221C35D5900C6399A /* aes_ni.c */; };
-		6B89780D21C35D5900C6399A /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977F421C35D5900C6399A /* prng.c */; };
-		6B89780E21C35D5900C6399A /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977F621C35D5900C6399A /* pwd2key.c */; };
-		6B89780F21C35D5900C6399A /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977F721C35D5900C6399A /* aestab.c */; };
-		6B89781021C35D5900C6399A /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8977FC21C35D5900C6399A /* SSZipArchive.m */; };
+		6BC3B932224A28BF00EE4670 /* HiNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC3B92F224A28B400EE4670 /* HiNetworkKit.framework */; };
+		6BC3B933224A28BF00EE4670 /* HiNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC3B92F224A28B400EE4670 /* HiNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6BC8FB7F22278A8B00682906 /* NKDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB4922278A8B00682906 /* NKDownloadManager.m */; };
+		6BC8FB8022278A8B00682906 /* NKDownloadViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BC8FB4A22278A8B00682906 /* NKDownloadViewController.xcassets */; };
+		6BC8FB8122278A8B00682906 /* NKDownloadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC8FB4C22278A8B00682906 /* NKDownloadViewController.storyboard */; };
+		6BC8FB8222278A8B00682906 /* NKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5022278A8B00682906 /* NKFileManager.m */; };
+		6BC8FB8322278A8B00682906 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5522278A8B00682906 /* crypt.c */; };
+		6BC8FB8422278A8B00682906 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5622278A8B00682906 /* unzip.c */; };
+		6BC8FB8522278A8B00682906 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5722278A8B00682906 /* zip.c */; };
+		6BC8FB8622278A8B00682906 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5922278A8B00682906 /* ioapi.c */; };
+		6BC8FB8722278A8B00682906 /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5B22278A8B00682906 /* ioapi_buf.c */; };
+		6BC8FB8822278A8B00682906 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB5F22278A8B00682906 /* ioapi_mem.c */; };
+		6BC8FB8922278A8B00682906 /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6022278A8B00682906 /* minishared.c */; };
+		6BC8FB8A22278A8B00682906 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6622278A8B00682906 /* aeskey.c */; };
+		6BC8FB8B22278A8B00682906 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6722278A8B00682906 /* hmac.c */; };
+		6BC8FB8C22278A8B00682906 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6A22278A8B00682906 /* aescrypt.c */; };
+		6BC8FB8D22278A8B00682906 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6B22278A8B00682906 /* fileenc.c */; };
+		6BC8FB8E22278A8B00682906 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB6D22278A8B00682906 /* sha1.c */; };
+		6BC8FB8F22278A8B00682906 /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7022278A8B00682906 /* aes_ni.c */; };
+		6BC8FB9022278A8B00682906 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7222278A8B00682906 /* prng.c */; };
+		6BC8FB9122278A8B00682906 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7422278A8B00682906 /* pwd2key.c */; };
+		6BC8FB9222278A8B00682906 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7522278A8B00682906 /* aestab.c */; };
+		6BC8FB9322278A8B00682906 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7A22278A8B00682906 /* SSZipArchive.m */; };
+		6BC8FB9422278A8B00682906 /* NKUnZipHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7B22278A8B00682906 /* NKUnZipHelper.m */; };
+		6BC8FB9522278A8B00682906 /* NKDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FB7E22278A8B00682906 /* NKDownloadViewController.m */; };
+		6BC8FC7C2227B5FD00682906 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC8FC7B2227B5FD00682906 /* CacheViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,14 +58,49 @@
 			remoteGlobalIDString = 6B89775B21C3593C00C6399A;
 			remoteInfo = Sample;
 		};
+		6BC3B92E224A28B400EE4670 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BC3B8E1224A276500EE4670;
+			remoteInfo = HiNetworkKit;
+		};
+		6BC3B930224A28B400EE4670 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BC3B8EA224A276500EE4670;
+			remoteInfo = HiNetworkKitTests;
+		};
+		6BC3B934224A28BF00EE4670 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BC3B8E0224A276500EE4670;
+			remoteInfo = HiNetworkKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6BC8FC792227AC5F00682906 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6BC3B933224A28BF00EE4670 /* HiNetworkKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6B89775C21C3593C00C6399A /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B89775F21C3593C00C6399A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B89776021C3593C00C6399A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6B89776221C3593C00C6399A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6B89776321C3593C00C6399A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6B89776221C3593C00C6399A /* DownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		6B89776321C3593C00C6399A /* DownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		6B89776621C3593C00C6399A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B89776821C3593D00C6399A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B89776B21C3593D00C6399A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,70 +112,57 @@
 		6B89777F21C3593D00C6399A /* SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B89778321C3593D00C6399A /* SampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleUITests.m; sourceTree = "<group>"; };
 		6B89778521C3593D00C6399A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B89779221C35A8100C6399A /* NKUploadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKUploadTask.m; sourceTree = "<group>"; };
-		6B89779321C35A8100C6399A /* NKHTTPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPTask.h; sourceTree = "<group>"; };
-		6B89779421C35A8100C6399A /* NKDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadTask.h; sourceTree = "<group>"; };
-		6B89779521C35A8100C6399A /* NKUploadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKUploadTask.h; sourceTree = "<group>"; };
-		6B89779721C35A8100C6399A /* NKDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDiskCache.m; sourceTree = "<group>"; };
-		6B89779821C35A8100C6399A /* NKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKCache.m; sourceTree = "<group>"; };
-		6B89779921C35A8100C6399A /* NKMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKMemoryCache.m; sourceTree = "<group>"; };
-		6B89779A21C35A8100C6399A /* NKCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCacheProtocol.h; sourceTree = "<group>"; };
-		6B89779B21C35A8100C6399A /* NKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCache.h; sourceTree = "<group>"; };
-		6B89779C21C35A8100C6399A /* NKDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDiskCache.h; sourceTree = "<group>"; };
-		6B89779D21C35A8100C6399A /* NKMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMemoryCache.h; sourceTree = "<group>"; };
-		6B89779E21C35A8100C6399A /* NKHTTPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPTask.m; sourceTree = "<group>"; };
-		6B8977A021C35A8100C6399A /* NKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKReachabilityManager.h; sourceTree = "<group>"; };
-		6B8977A121C35A8100C6399A /* NKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKReachabilityManager.m; sourceTree = "<group>"; };
-		6B8977A221C35A8100C6399A /* NKDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadTask.m; sourceTree = "<group>"; };
-		6B8977B521C35BDD00C6399A /* NKDownloadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NKDownloadViewController.storyboard; sourceTree = "<group>"; };
-		6B8977B621C35BDD00C6399A /* NKDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadViewController.h; sourceTree = "<group>"; };
-		6B8977B721C35BDD00C6399A /* NKDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadManager.m; sourceTree = "<group>"; };
-		6B8977B821C35BDD00C6399A /* NKDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadViewController.m; sourceTree = "<group>"; };
-		6B8977B921C35BDD00C6399A /* NKDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadManager.h; sourceTree = "<group>"; };
-		6B8977BD21C35C2600C6399A /* NKDownloadViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NKDownloadViewController.xcassets; sourceTree = "<group>"; };
-		6B8977C121C35CF100C6399A /* NKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKFileManager.h; sourceTree = "<group>"; };
-		6B8977C221C35CF100C6399A /* NKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKFileManager.m; sourceTree = "<group>"; };
-		6B8977D321C35D5800C6399A /* NKUnZipHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKUnZipHelper.m; sourceTree = "<group>"; };
-		6B8977D521C35D5800C6399A /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		6B8977D721C35D5800C6399A /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
-		6B8977D821C35D5900C6399A /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		6B8977D921C35D5900C6399A /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		6B8977DA21C35D5900C6399A /* minishared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minishared.h; sourceTree = "<group>"; };
-		6B8977DB21C35D5900C6399A /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		6B8977DC21C35D5900C6399A /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_mem.h; sourceTree = "<group>"; };
-		6B8977DD21C35D5900C6399A /* ioapi_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi_buf.c; sourceTree = "<group>"; };
-		6B8977DE21C35D5900C6399A /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		6B8977DF21C35D5900C6399A /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		6B8977E021C35D5900C6399A /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		6B8977E121C35D5900C6399A /* ioapi_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi_mem.c; sourceTree = "<group>"; };
-		6B8977E221C35D5900C6399A /* minishared.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = minishared.c; sourceTree = "<group>"; };
-		6B8977E321C35D5900C6399A /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		6B8977E421C35D5900C6399A /* ioapi_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_buf.h; sourceTree = "<group>"; };
-		6B8977E621C35D5900C6399A /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
-		6B8977E721C35D5900C6399A /* aes_ni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_ni.h; sourceTree = "<group>"; };
-		6B8977E821C35D5900C6399A /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
-		6B8977E921C35D5900C6399A /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
-		6B8977EA21C35D5900C6399A /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
-		6B8977EB21C35D5900C6399A /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
-		6B8977EC21C35D5900C6399A /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
-		6B8977ED21C35D5900C6399A /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
-		6B8977EE21C35D5900C6399A /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
-		6B8977EF21C35D5900C6399A /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
-		6B8977F021C35D5900C6399A /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
-		6B8977F121C35D5900C6399A /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
-		6B8977F221C35D5900C6399A /* aes_ni.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aes_ni.c; sourceTree = "<group>"; };
-		6B8977F321C35D5900C6399A /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
-		6B8977F421C35D5900C6399A /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
-		6B8977F521C35D5900C6399A /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		6B8977F621C35D5900C6399A /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
-		6B8977F721C35D5900C6399A /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
-		6B8977F821C35D5900C6399A /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		6B8977F921C35D5900C6399A /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
-		6B8977FA21C35D5900C6399A /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
-		6B8977FB21C35D5900C6399A /* SSZipCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipCommon.h; sourceTree = "<group>"; };
-		6B8977FC21C35D5900C6399A /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
-		6B8977FE21C35D5900C6399A /* NKUnZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKUnZipHelper.h; sourceTree = "<group>"; };
-		6B89781C21C3B83500C6399A /* NetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkKit.h; sourceTree = "<group>"; };
+		6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HiNetworkKit.xcodeproj; path = ../Framework/HiNetworkKit.xcodeproj; sourceTree = "<group>"; };
+		6BC8FB4922278A8B00682906 /* NKDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadManager.m; sourceTree = "<group>"; };
+		6BC8FB4A22278A8B00682906 /* NKDownloadViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NKDownloadViewController.xcassets; sourceTree = "<group>"; };
+		6BC8FB4B22278A8B00682906 /* NKDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadViewController.h; sourceTree = "<group>"; };
+		6BC8FB4C22278A8B00682906 /* NKDownloadViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NKDownloadViewController.storyboard; sourceTree = "<group>"; };
+		6BC8FB4F22278A8B00682906 /* NKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKFileManager.h; sourceTree = "<group>"; };
+		6BC8FB5022278A8B00682906 /* NKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKFileManager.m; sourceTree = "<group>"; };
+		6BC8FB5322278A8B00682906 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		6BC8FB5522278A8B00682906 /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
+		6BC8FB5622278A8B00682906 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		6BC8FB5722278A8B00682906 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		6BC8FB5822278A8B00682906 /* minishared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minishared.h; sourceTree = "<group>"; };
+		6BC8FB5922278A8B00682906 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		6BC8FB5A22278A8B00682906 /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_mem.h; sourceTree = "<group>"; };
+		6BC8FB5B22278A8B00682906 /* ioapi_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi_buf.c; sourceTree = "<group>"; };
+		6BC8FB5C22278A8B00682906 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		6BC8FB5D22278A8B00682906 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		6BC8FB5E22278A8B00682906 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		6BC8FB5F22278A8B00682906 /* ioapi_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi_mem.c; sourceTree = "<group>"; };
+		6BC8FB6022278A8B00682906 /* minishared.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = minishared.c; sourceTree = "<group>"; };
+		6BC8FB6122278A8B00682906 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		6BC8FB6222278A8B00682906 /* ioapi_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_buf.h; sourceTree = "<group>"; };
+		6BC8FB6422278A8B00682906 /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
+		6BC8FB6522278A8B00682906 /* aes_ni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_ni.h; sourceTree = "<group>"; };
+		6BC8FB6622278A8B00682906 /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		6BC8FB6722278A8B00682906 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		6BC8FB6822278A8B00682906 /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
+		6BC8FB6922278A8B00682906 /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
+		6BC8FB6A22278A8B00682906 /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		6BC8FB6B22278A8B00682906 /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
+		6BC8FB6C22278A8B00682906 /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
+		6BC8FB6D22278A8B00682906 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		6BC8FB6E22278A8B00682906 /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
+		6BC8FB6F22278A8B00682906 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		6BC8FB7022278A8B00682906 /* aes_ni.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aes_ni.c; sourceTree = "<group>"; };
+		6BC8FB7122278A8B00682906 /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
+		6BC8FB7222278A8B00682906 /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
+		6BC8FB7322278A8B00682906 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		6BC8FB7422278A8B00682906 /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
+		6BC8FB7522278A8B00682906 /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		6BC8FB7622278A8B00682906 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		6BC8FB7722278A8B00682906 /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
+		6BC8FB7822278A8B00682906 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		6BC8FB7922278A8B00682906 /* SSZipCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipCommon.h; sourceTree = "<group>"; };
+		6BC8FB7A22278A8B00682906 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		6BC8FB7B22278A8B00682906 /* NKUnZipHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKUnZipHelper.m; sourceTree = "<group>"; };
+		6BC8FB7C22278A8B00682906 /* NKUnZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKUnZipHelper.h; sourceTree = "<group>"; };
+		6BC8FB7D22278A8B00682906 /* NKDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKDownloadManager.h; sourceTree = "<group>"; };
+		6BC8FB7E22278A8B00682906 /* NKDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKDownloadViewController.m; sourceTree = "<group>"; };
+		6BC8FC7A2227B5FD00682906 /* CacheViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CacheViewController.h; sourceTree = "<group>"; };
+		6BC8FC7B2227B5FD00682906 /* CacheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC3B932224A28BF00EE4670 /* HiNetworkKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,8 +194,8 @@
 		6B89775321C3593C00C6399A = {
 			isa = PBXGroup;
 			children = (
-				6B89779121C35A8100C6399A /* NetworkKit */,
-				6B8977B421C35BDD00C6399A /* NKDownloadViewController */,
+				6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */,
+				6BC8FB4822278A8B00682906 /* NKDownloadViewController */,
 				6B89775E21C3593C00C6399A /* Sample */,
 				6B89777721C3593D00C6399A /* SampleTests */,
 				6B89778221C3593D00C6399A /* SampleUITests */,
@@ -199,8 +218,10 @@
 			children = (
 				6B89775F21C3593C00C6399A /* AppDelegate.h */,
 				6B89776021C3593C00C6399A /* AppDelegate.m */,
-				6B89776221C3593C00C6399A /* ViewController.h */,
-				6B89776321C3593C00C6399A /* ViewController.m */,
+				6B89776221C3593C00C6399A /* DownloadViewController.h */,
+				6B89776321C3593C00C6399A /* DownloadViewController.m */,
+				6BC8FC7A2227B5FD00682906 /* CacheViewController.h */,
+				6BC8FC7B2227B5FD00682906 /* CacheViewController.m */,
 				6B8977AA21C35B3400C6399A /* Resource */,
 			);
 			path = Sample;
@@ -224,46 +245,6 @@
 			path = SampleUITests;
 			sourceTree = "<group>";
 		};
-		6B89779121C35A8100C6399A /* NetworkKit */ = {
-			isa = PBXGroup;
-			children = (
-				6B89781C21C3B83500C6399A /* NetworkKit.h */,
-				6B89779421C35A8100C6399A /* NKDownloadTask.h */,
-				6B8977A221C35A8100C6399A /* NKDownloadTask.m */,
-				6B89779321C35A8100C6399A /* NKHTTPTask.h */,
-				6B89779E21C35A8100C6399A /* NKHTTPTask.m */,
-				6B89779521C35A8100C6399A /* NKUploadTask.h */,
-				6B89779221C35A8100C6399A /* NKUploadTask.m */,
-				6B89779F21C35A8100C6399A /* NKReachability */,
-				6B89779621C35A8100C6399A /* NKCache */,
-			);
-			name = NetworkKit;
-			path = ../Source/NetworkKit;
-			sourceTree = "<group>";
-		};
-		6B89779621C35A8100C6399A /* NKCache */ = {
-			isa = PBXGroup;
-			children = (
-				6B89779B21C35A8100C6399A /* NKCache.h */,
-				6B89779821C35A8100C6399A /* NKCache.m */,
-				6B89779A21C35A8100C6399A /* NKCacheProtocol.h */,
-				6B89779D21C35A8100C6399A /* NKMemoryCache.h */,
-				6B89779921C35A8100C6399A /* NKMemoryCache.m */,
-				6B89779C21C35A8100C6399A /* NKDiskCache.h */,
-				6B89779721C35A8100C6399A /* NKDiskCache.m */,
-			);
-			path = NKCache;
-			sourceTree = "<group>";
-		};
-		6B89779F21C35A8100C6399A /* NKReachability */ = {
-			isa = PBXGroup;
-			children = (
-				6B8977A021C35A8100C6399A /* NKReachabilityManager.h */,
-				6B8977A121C35A8100C6399A /* NKReachabilityManager.m */,
-			);
-			path = NKReachability;
-			sourceTree = "<group>";
-		};
 		6B8977AA21C35B3400C6399A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,108 +257,124 @@
 			name = Resource;
 			sourceTree = "<group>";
 		};
-		6B8977B421C35BDD00C6399A /* NKDownloadViewController */ = {
+		6BC3B92A224A28B400EE4670 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977B621C35BDD00C6399A /* NKDownloadViewController.h */,
-				6B8977B821C35BDD00C6399A /* NKDownloadViewController.m */,
-				6B8977B921C35BDD00C6399A /* NKDownloadManager.h */,
-				6B8977B721C35BDD00C6399A /* NKDownloadManager.m */,
-				6B8977B521C35BDD00C6399A /* NKDownloadViewController.storyboard */,
-				6B8977BD21C35C2600C6399A /* NKDownloadViewController.xcassets */,
-				6B8977BF21C35CF100C6399A /* Utilities */,
+				6BC3B92F224A28B400EE4670 /* HiNetworkKit.framework */,
+				6BC3B931224A28B400EE4670 /* HiNetworkKitTests.xctest */,
 			);
-			name = NKDownloadViewController;
-			path = ../Source/NKDownloadViewController;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		6B8977BF21C35CF100C6399A /* Utilities */ = {
+		6BC8FB4822278A8B00682906 /* NKDownloadViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977C021C35CF100C6399A /* File */,
-				6B8977D221C35D5800C6399A /* Zip */,
+				6BC8FB4B22278A8B00682906 /* NKDownloadViewController.h */,
+				6BC8FB7E22278A8B00682906 /* NKDownloadViewController.m */,
+				6BC8FB4922278A8B00682906 /* NKDownloadManager.m */,
+				6BC8FB7D22278A8B00682906 /* NKDownloadManager.h */,
+				6BC8FB9622278A9800682906 /* Resources */,
+				6BC8FB4D22278A8B00682906 /* Utilities */,
+			);
+			path = NKDownloadViewController;
+			sourceTree = "<group>";
+		};
+		6BC8FB4D22278A8B00682906 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6BC8FB4E22278A8B00682906 /* File */,
+				6BC8FB5122278A8B00682906 /* Zip */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		6B8977C021C35CF100C6399A /* File */ = {
+		6BC8FB4E22278A8B00682906 /* File */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977C121C35CF100C6399A /* NKFileManager.h */,
-				6B8977C221C35CF100C6399A /* NKFileManager.m */,
+				6BC8FB4F22278A8B00682906 /* NKFileManager.h */,
+				6BC8FB5022278A8B00682906 /* NKFileManager.m */,
 			);
 			path = File;
 			sourceTree = "<group>";
 		};
-		6B8977D221C35D5800C6399A /* Zip */ = {
+		6BC8FB5122278A8B00682906 /* Zip */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977FE21C35D5900C6399A /* NKUnZipHelper.h */,
-				6B8977D321C35D5800C6399A /* NKUnZipHelper.m */,
-				6B8977D421C35D5800C6399A /* SSZipArchive_v2.1.4 */,
+				6BC8FB7B22278A8B00682906 /* NKUnZipHelper.m */,
+				6BC8FB7C22278A8B00682906 /* NKUnZipHelper.h */,
+				6BC8FB5222278A8B00682906 /* SSZipArchive_v2.1.4 */,
 			);
 			path = Zip;
 			sourceTree = "<group>";
 		};
-		6B8977D421C35D5800C6399A /* SSZipArchive_v2.1.4 */ = {
+		6BC8FB5222278A8B00682906 /* SSZipArchive_v2.1.4 */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977D521C35D5800C6399A /* ZipArchive.h */,
-				6B8977FA21C35D5900C6399A /* SSZipArchive.h */,
-				6B8977FC21C35D5900C6399A /* SSZipArchive.m */,
-				6B8977FB21C35D5900C6399A /* SSZipCommon.h */,
-				6B8977D621C35D5800C6399A /* minizip */,
+				6BC8FB5322278A8B00682906 /* ZipArchive.h */,
+				6BC8FB7922278A8B00682906 /* SSZipCommon.h */,
+				6BC8FB7822278A8B00682906 /* SSZipArchive.h */,
+				6BC8FB7A22278A8B00682906 /* SSZipArchive.m */,
+				6BC8FB5422278A8B00682906 /* minizip */,
 			);
 			path = SSZipArchive_v2.1.4;
 			sourceTree = "<group>";
 		};
-		6B8977D621C35D5800C6399A /* minizip */ = {
+		6BC8FB5422278A8B00682906 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977D721C35D5800C6399A /* crypt.c */,
-				6B8977D821C35D5900C6399A /* unzip.c */,
-				6B8977D921C35D5900C6399A /* zip.c */,
-				6B8977DA21C35D5900C6399A /* minishared.h */,
-				6B8977DB21C35D5900C6399A /* ioapi.c */,
-				6B8977DC21C35D5900C6399A /* ioapi_mem.h */,
-				6B8977DD21C35D5900C6399A /* ioapi_buf.c */,
-				6B8977DE21C35D5900C6399A /* crypt.h */,
-				6B8977DF21C35D5900C6399A /* zip.h */,
-				6B8977E021C35D5900C6399A /* unzip.h */,
-				6B8977E121C35D5900C6399A /* ioapi_mem.c */,
-				6B8977E221C35D5900C6399A /* minishared.c */,
-				6B8977E321C35D5900C6399A /* ioapi.h */,
-				6B8977E421C35D5900C6399A /* ioapi_buf.h */,
-				6B8977E521C35D5900C6399A /* aes */,
+				6BC8FB5522278A8B00682906 /* crypt.c */,
+				6BC8FB5622278A8B00682906 /* unzip.c */,
+				6BC8FB5722278A8B00682906 /* zip.c */,
+				6BC8FB5822278A8B00682906 /* minishared.h */,
+				6BC8FB5922278A8B00682906 /* ioapi.c */,
+				6BC8FB5A22278A8B00682906 /* ioapi_mem.h */,
+				6BC8FB5B22278A8B00682906 /* ioapi_buf.c */,
+				6BC8FB5C22278A8B00682906 /* crypt.h */,
+				6BC8FB5D22278A8B00682906 /* zip.h */,
+				6BC8FB5E22278A8B00682906 /* unzip.h */,
+				6BC8FB5F22278A8B00682906 /* ioapi_mem.c */,
+				6BC8FB6022278A8B00682906 /* minishared.c */,
+				6BC8FB6122278A8B00682906 /* ioapi.h */,
+				6BC8FB6222278A8B00682906 /* ioapi_buf.h */,
+				6BC8FB6322278A8B00682906 /* aes */,
 			);
 			path = minizip;
 			sourceTree = "<group>";
 		};
-		6B8977E521C35D5900C6399A /* aes */ = {
+		6BC8FB6322278A8B00682906 /* aes */ = {
 			isa = PBXGroup;
 			children = (
-				6B8977E621C35D5900C6399A /* prng.h */,
-				6B8977E721C35D5900C6399A /* aes_ni.h */,
-				6B8977E821C35D5900C6399A /* aeskey.c */,
-				6B8977E921C35D5900C6399A /* hmac.c */,
-				6B8977EA21C35D5900C6399A /* aestab.h */,
-				6B8977EB21C35D5900C6399A /* pwd2key.h */,
-				6B8977EC21C35D5900C6399A /* aescrypt.c */,
-				6B8977ED21C35D5900C6399A /* fileenc.c */,
-				6B8977EE21C35D5900C6399A /* aesopt.h */,
-				6B8977EF21C35D5900C6399A /* sha1.c */,
-				6B8977F021C35D5900C6399A /* brg_types.h */,
-				6B8977F121C35D5900C6399A /* hmac.h */,
-				6B8977F221C35D5900C6399A /* aes_ni.c */,
-				6B8977F321C35D5900C6399A /* brg_endian.h */,
-				6B8977F421C35D5900C6399A /* prng.c */,
-				6B8977F521C35D5900C6399A /* aes.h */,
-				6B8977F621C35D5900C6399A /* pwd2key.c */,
-				6B8977F721C35D5900C6399A /* aestab.c */,
-				6B8977F821C35D5900C6399A /* sha1.h */,
-				6B8977F921C35D5900C6399A /* fileenc.h */,
+				6BC8FB6422278A8B00682906 /* prng.h */,
+				6BC8FB6522278A8B00682906 /* aes_ni.h */,
+				6BC8FB6622278A8B00682906 /* aeskey.c */,
+				6BC8FB6722278A8B00682906 /* hmac.c */,
+				6BC8FB6822278A8B00682906 /* aestab.h */,
+				6BC8FB6922278A8B00682906 /* pwd2key.h */,
+				6BC8FB6A22278A8B00682906 /* aescrypt.c */,
+				6BC8FB6B22278A8B00682906 /* fileenc.c */,
+				6BC8FB6C22278A8B00682906 /* aesopt.h */,
+				6BC8FB6D22278A8B00682906 /* sha1.c */,
+				6BC8FB6E22278A8B00682906 /* brg_types.h */,
+				6BC8FB6F22278A8B00682906 /* hmac.h */,
+				6BC8FB7022278A8B00682906 /* aes_ni.c */,
+				6BC8FB7122278A8B00682906 /* brg_endian.h */,
+				6BC8FB7222278A8B00682906 /* prng.c */,
+				6BC8FB7322278A8B00682906 /* aes.h */,
+				6BC8FB7422278A8B00682906 /* pwd2key.c */,
+				6BC8FB7522278A8B00682906 /* aestab.c */,
+				6BC8FB7622278A8B00682906 /* sha1.h */,
+				6BC8FB7722278A8B00682906 /* fileenc.h */,
 			);
 			path = aes;
+			sourceTree = "<group>";
+		};
+		6BC8FB9622278A9800682906 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6BC8FB4A22278A8B00682906 /* NKDownloadViewController.xcassets */,
+				6BC8FB4C22278A8B00682906 /* NKDownloadViewController.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,10 +387,12 @@
 				6B89775821C3593C00C6399A /* Sources */,
 				6B89775921C3593C00C6399A /* Frameworks */,
 				6B89775A21C3593C00C6399A /* Resources */,
+				6BC8FC792227AC5F00682906 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6BC3B935224A28BF00EE4670 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -469,6 +468,12 @@
 			mainGroup = 6B89775321C3593C00C6399A;
 			productRefGroup = 6B89775D21C3593C00C6399A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6BC3B92A224A28B400EE4670 /* Products */;
+					ProjectRef = 6BC3B929224A28B400EE4670 /* HiNetworkKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6B89775B21C3593C00C6399A /* Sample */,
@@ -478,16 +483,33 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		6BC3B92F224A28B400EE4670 /* HiNetworkKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HiNetworkKit.framework;
+			remoteRef = 6BC3B92E224A28B400EE4670 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6BC3B931224A28B400EE4670 /* HiNetworkKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = HiNetworkKitTests.xctest;
+			remoteRef = 6BC3B930224A28B400EE4670 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		6B89775A21C3593C00C6399A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6B89776C21C3593D00C6399A /* LaunchScreen.storyboard in Resources */,
-				6B8977BE21C35C2600C6399A /* NKDownloadViewController.xcassets in Resources */,
-				6B8977BA21C35BDD00C6399A /* NKDownloadViewController.storyboard in Resources */,
+				6BC8FB8122278A8B00682906 /* NKDownloadViewController.storyboard in Resources */,
 				6B89776921C3593D00C6399A /* Assets.xcassets in Resources */,
 				6B89776721C3593C00C6399A /* Main.storyboard in Resources */,
+				6BC8FB8022278A8B00682906 /* NKDownloadViewController.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,37 +534,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B89780B21C35D5900C6399A /* sha1.c in Sources */,
-				6B89780F21C35D5900C6399A /* aestab.c in Sources */,
-				6B89780821C35D5900C6399A /* hmac.c in Sources */,
-				6B89776421C3593C00C6399A /* ViewController.m in Sources */,
-				6B89780621C35D5900C6399A /* minishared.c in Sources */,
-				6B89780C21C35D5900C6399A /* aes_ni.c in Sources */,
-				6B89780E21C35D5900C6399A /* pwd2key.c in Sources */,
-				6B8977BC21C35BDD00C6399A /* NKDownloadViewController.m in Sources */,
+				6BC8FB9022278A8B00682906 /* prng.c in Sources */,
+				6BC8FB8822278A8B00682906 /* ioapi_mem.c in Sources */,
+				6B89776421C3593C00C6399A /* DownloadViewController.m in Sources */,
 				6B89776F21C3593D00C6399A /* main.m in Sources */,
-				6B8977A321C35A8100C6399A /* NKUploadTask.m in Sources */,
-				6B89780521C35D5900C6399A /* ioapi_mem.c in Sources */,
-				6B8977A821C35A8100C6399A /* NKReachabilityManager.m in Sources */,
-				6B89780A21C35D5900C6399A /* fileenc.c in Sources */,
-				6B8977BB21C35BDD00C6399A /* NKDownloadManager.m in Sources */,
-				6B89780321C35D5900C6399A /* ioapi.c in Sources */,
-				6B89780221C35D5900C6399A /* zip.c in Sources */,
-				6B8977CD21C35CF100C6399A /* NKFileManager.m in Sources */,
-				6B89780421C35D5900C6399A /* ioapi_buf.c in Sources */,
-				6B8977A721C35A8100C6399A /* NKHTTPTask.m in Sources */,
-				6B89780721C35D5900C6399A /* aeskey.c in Sources */,
-				6B89781021C35D5900C6399A /* SSZipArchive.m in Sources */,
-				6B8977FF21C35D5900C6399A /* NKUnZipHelper.m in Sources */,
-				6B89780021C35D5900C6399A /* crypt.c in Sources */,
-				6B8977A421C35A8100C6399A /* NKDiskCache.m in Sources */,
+				6BC8FB8222278A8B00682906 /* NKFileManager.m in Sources */,
+				6BC8FB9322278A8B00682906 /* SSZipArchive.m in Sources */,
+				6BC8FB8C22278A8B00682906 /* aescrypt.c in Sources */,
+				6BC8FB8522278A8B00682906 /* zip.c in Sources */,
+				6BC8FB9222278A8B00682906 /* aestab.c in Sources */,
+				6BC8FB8922278A8B00682906 /* minishared.c in Sources */,
+				6BC8FB8322278A8B00682906 /* crypt.c in Sources */,
+				6BC8FB8E22278A8B00682906 /* sha1.c in Sources */,
+				6BC8FB8D22278A8B00682906 /* fileenc.c in Sources */,
+				6BC8FB9422278A8B00682906 /* NKUnZipHelper.m in Sources */,
+				6BC8FB8722278A8B00682906 /* ioapi_buf.c in Sources */,
+				6BC8FB8F22278A8B00682906 /* aes_ni.c in Sources */,
+				6BC8FB8422278A8B00682906 /* unzip.c in Sources */,
+				6BC8FC7C2227B5FD00682906 /* CacheViewController.m in Sources */,
+				6BC8FB8622278A8B00682906 /* ioapi.c in Sources */,
 				6B89776121C3593C00C6399A /* AppDelegate.m in Sources */,
-				6B8977A921C35A8100C6399A /* NKDownloadTask.m in Sources */,
-				6B8977A621C35A8100C6399A /* NKMemoryCache.m in Sources */,
-				6B89780121C35D5900C6399A /* unzip.c in Sources */,
-				6B89780921C35D5900C6399A /* aescrypt.c in Sources */,
-				6B89780D21C35D5900C6399A /* prng.c in Sources */,
-				6B8977A521C35A8100C6399A /* NKCache.m in Sources */,
+				6BC8FB8B22278A8B00682906 /* hmac.c in Sources */,
+				6BC8FB9522278A8B00682906 /* NKDownloadViewController.m in Sources */,
+				6BC8FB7F22278A8B00682906 /* NKDownloadManager.m in Sources */,
+				6BC8FB9122278A8B00682906 /* pwd2key.c in Sources */,
+				6BC8FB8A22278A8B00682906 /* aeskey.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +590,11 @@
 			isa = PBXTargetDependency;
 			target = 6B89775B21C3593C00C6399A /* Sample */;
 			targetProxy = 6B89778021C3593D00C6399A /* PBXContainerItemProxy */;
+		};
+		6BC3B935224A28BF00EE4670 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HiNetworkKit;
+			targetProxy = 6BC3B934224A28BF00EE4670 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
